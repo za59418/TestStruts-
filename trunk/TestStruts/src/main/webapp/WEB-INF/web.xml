@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.3" 
+    xmlns="http://java.sun.com/xml/ns/javaee" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+    http://java.sun.com/xml/ns/javaee/web-app_2_3.xsd">
+
+    <display-name>TestStruts</display-name>
+    
+    <!-- 这个在tomcat6是没问题的，但在tomcat7以上就会报错了，查资料证实tomcat7以上需要加jsp-config -->
+    <jsp-config>
+	    <taglib>
+			<taglib-uri>/struts-tags</taglib-uri>
+			<taglib-location>struts-tags.tld</taglib-location>
+		</taglib>
+		<taglib>
+			<taglib-uri>/struts-jquery-tags</taglib-uri>
+			<taglib-location>struts-jquery-tags.tld</taglib-location>
+		</taglib>
+	</jsp-config>
+
+    <!-- add struts2 configiguration -->
+    <filter>
+        <description>配置struts2的核心过滤器</description>
+        <filter-name>struts2</filter-name>
+        <filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>struts2</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+    <!-- end add struts2 configuration-->
+</web-app>
