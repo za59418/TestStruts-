@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+    <constant name="struts.devMode" value="true"></constant>  
+    <constant name="struts.i18n.encoding" value="UTF-8"></constant> 
+    <constant name="struts.locale" value="zh_CN"></constant> 
+
+        
+    <package name="default" extends="struts-default,json-default">
+                
+	    <result-types>
+	        <result-type name="chart" class="org.apache.struts2.dispatcher.ChartResult"/>
+	    </result-types>
+
+        <action name="testJson" class="com.zxl.action.JsonAction" method="getJson">
+        	<result type="json" />
+        </action>
+        
+        <action name="testOnlyPage">
+            <result>/onlyPage.jsp</result>
+        </action>
+        
+        <action name="testAjax" class="com.zxl.action.AjaxAction">
+            <result name="success">ajax.jsp</result>
+        </action>       
+
+
+        <action name="testChart" class="com.zxl.action.ChartAction">
+            <result name="success" type="chart">
+                <param name="value">chart</param>
+                <param name="type">png</param>
+                <param name="width">640</param>
+                <param name="height">480</param>
+            </result>
+        </action>
+        
+    </package>
+</struts>
